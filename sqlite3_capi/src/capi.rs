@@ -57,9 +57,7 @@ mod aliased {
         sqlite3_exec as exec, sqlite3_finalize as finalize, sqlite3_free as free,
         sqlite3_get_autocommit as get_autocommit, sqlite3_get_auxdata as get_auxdata,
         sqlite3_libversion as libversion, sqlite3_libversion_number as libversion_number,
-        sqlite3_malloc as malloc, sqlite3_malloc64 as malloc64, sqlite3_mutex_alloc as mutex_alloc,
-        sqlite3_mutex_enter as mutex_enter, sqlite3_mutex_free as mutex_free,
-        sqlite3_mutex_leave as mutex_leave, sqlite3_mutex_try as mutex_try,
+        sqlite3_malloc as malloc, sqlite3_malloc64 as malloc64,
         sqlite3_next_stmt as next_stmt, sqlite3_open as open, sqlite3_prepare_v2 as prepare_v2,
         sqlite3_prepare_v3 as prepare_v3, sqlite3_randomness as randomness, sqlite3_reset as reset,
         sqlite3_result_blob as result_blob, sqlite3_result_double as result_double,
@@ -641,24 +639,4 @@ pub fn vtab_distinct(index_info: *mut index_info) -> c_int {
 
 pub fn get_autocommit(db: *mut sqlite3) -> c_int {
     unsafe { invoke_sqlite!(get_autocommit, db) }
-}
-
-pub fn sqlite3_mutex_alloc(flags: c_int) -> *mut sqlite3_mutex {
-    unsafe { invoke_sqlite!(mutex_alloc, flags) }
-}
-
-pub fn sqlite3_mutex_free(mutex: *mut sqlite3_mutex) {
-    unsafe { invoke_sqlite!(mutex_free, mutex) }
-}
-
-pub fn sqlite3_mutex_enter(mutex: *mut sqlite3_mutex) {
-    unsafe { invoke_sqlite!(mutex_enter, mutex) }
-}
-
-pub fn sqlite3_mutex_try(mutex: *mut sqlite3_mutex) -> c_int {
-    unsafe { invoke_sqlite!(mutex_try, mutex) }
-}
-
-pub fn sqlite3_mutex_leave(mutex: *mut sqlite3_mutex) {
-    unsafe { invoke_sqlite!(mutex_leave, mutex) }
 }
