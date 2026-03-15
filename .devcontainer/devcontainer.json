@@ -1,0 +1,7 @@
+{
+  "name": "kanmem/sqlite-nostd",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "echo '. \"$HOME/.cargo/env\"' >> $HOME/.bashrc"
+}

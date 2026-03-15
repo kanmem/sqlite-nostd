@@ -1,7 +1,3 @@
 {
-  "rust-analyzer.checkOnSave.overrideCommand": [
-    "./cargo",
-    "xcheck",
-    "--json-output"
-  ]
+  "rust-analyzer.server.path": "/home/vscode/.cargo/bin/rust-analyzer",
 }
