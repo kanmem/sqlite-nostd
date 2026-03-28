@@ -1,7 +1,7 @@
-ARG VARIANT="alpine-3.22"
+ARG VARIANT="2-trixie"
 FROM mcr.microsoft.com/devcontainers/base:${VARIANT}
 
-RUN apk update && apk upgrade
+RUN apt-get update && apt-get upgrade -y && apt-get install libclang-dev -y
 
 USER vscode
 
