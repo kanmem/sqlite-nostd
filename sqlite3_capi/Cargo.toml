@@ -7,12 +7,17 @@ edition = "2021"
 name = "sqlite3_capi"
 crate-type = ["rlib"]
 
-[dependencies]
+[dependencies.libsqlite3-sys]
+version = ">=0.30.0, <=0.37.0"
+default-features = false
+features = ["pkg-config", "vcpkg"]
 
 [build-dependencies]
 bindgen = "0.72.1"
 
 [features]
-loadable_extension = []
-static = []
-omit_load_extension = []
+bundled = ["libsqlite3-sys/bundled"]
+unbundled = ["libsqlite3-sys/buildtime_bindgen"]
+
+loadable_extension = ["unbundled"]
+linked = []

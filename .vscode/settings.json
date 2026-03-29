@@ -1,3 +1,7 @@
 {
+  "rust-analyzer.cargo.features": [
+    "linked",
+    "bundled"
+  ],
   "rust-analyzer.server.path": "/home/vscode/.cargo/bin/rust-analyzer",
 }

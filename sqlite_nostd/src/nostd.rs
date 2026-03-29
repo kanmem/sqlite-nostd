@@ -88,81 +88,81 @@ pub enum ResultCode {
     WARNING = 28,
     ROW = 100,
     DONE = 101,
-    ERROR_MISSING_COLLSEQ = bindings::SQLITE_ERROR_MISSING_COLLSEQ as isize,
-    ERROR_RETRY = bindings::SQLITE_ERROR_RETRY as isize,
-    ERROR_SNAPSHOT = bindings::SQLITE_ERROR_SNAPSHOT as isize,
-    IOERR_READ = bindings::SQLITE_IOERR_READ as isize,
-    IOERR_SHORT_READ = bindings::SQLITE_IOERR_SHORT_READ as isize,
-    IOERR_WRITE = bindings::SQLITE_IOERR_WRITE as isize,
-    IOERR_FSYNC = bindings::SQLITE_IOERR_FSYNC as isize,
-    IOERR_DIR_FSYNC = bindings::SQLITE_IOERR_DIR_FSYNC as isize,
-    IOERR_TRUNCATE = bindings::SQLITE_IOERR_TRUNCATE as isize,
-    IOERR_FSTAT = bindings::SQLITE_IOERR_FSTAT as isize,
-    IOERR_UNLOCK = bindings::SQLITE_IOERR_UNLOCK as isize,
-    IOERR_RDLOCK = bindings::SQLITE_IOERR_RDLOCK as isize,
-    IOERR_DELETE = bindings::SQLITE_IOERR_DELETE as isize,
-    IOERR_BLOCKED = bindings::SQLITE_IOERR_BLOCKED as isize,
-    IOERR_NOMEM = bindings::SQLITE_IOERR_NOMEM as isize,
-    IOERR_ACCESS = bindings::SQLITE_IOERR_ACCESS as isize,
-    IOERR_CHECKRESERVEDLOCK = bindings::SQLITE_IOERR_CHECKRESERVEDLOCK as isize,
-    IOERR_LOCK = bindings::SQLITE_IOERR_LOCK as isize,
-    IOERR_CLOSE = bindings::SQLITE_IOERR_CLOSE as isize,
-    IOERR_DIR_CLOSE = bindings::SQLITE_IOERR_DIR_CLOSE as isize,
-    IOERR_SHMOPEN = bindings::SQLITE_IOERR_SHMOPEN as isize,
-    IOERR_SHMSIZE = bindings::SQLITE_IOERR_SHMSIZE as isize,
-    IOERR_SHMLOCK = bindings::SQLITE_IOERR_SHMLOCK as isize,
-    IOERR_SHMMAP = bindings::SQLITE_IOERR_SHMMAP as isize,
-    IOERR_SEEK = bindings::SQLITE_IOERR_SEEK as isize,
-    IOERR_DELETE_NOENT = bindings::SQLITE_IOERR_DELETE_NOENT as isize,
-    IOERR_MMAP = bindings::SQLITE_IOERR_MMAP as isize,
-    IOERR_GETTEMPPATH = bindings::SQLITE_IOERR_GETTEMPPATH as isize,
-    IOERR_CONVPATH = bindings::SQLITE_IOERR_CONVPATH as isize,
-    IOERR_VNODE = bindings::SQLITE_IOERR_VNODE as isize,
-    IOERR_AUTH = bindings::SQLITE_IOERR_AUTH as isize,
-    IOERR_BEGIN_ATOMIC = bindings::SQLITE_IOERR_BEGIN_ATOMIC as isize,
-    IOERR_COMMIT_ATOMIC = bindings::SQLITE_IOERR_COMMIT_ATOMIC as isize,
-    IOERR_ROLLBACK_ATOMIC = bindings::SQLITE_IOERR_ROLLBACK_ATOMIC as isize,
-    IOERR_DATA = bindings::SQLITE_IOERR_DATA as isize,
-    IOERR_CORRUPTFS = bindings::SQLITE_IOERR_CORRUPTFS as isize,
-    LOCKED_SHAREDCACHE = bindings::SQLITE_LOCKED_SHAREDCACHE as isize,
-    LOCKED_VTAB = bindings::SQLITE_LOCKED_VTAB as isize,
-    BUSY_RECOVERY = bindings::SQLITE_BUSY_RECOVERY as isize,
-    BUSY_SNAPSHOT = bindings::SQLITE_BUSY_SNAPSHOT as isize,
-    BUSY_TIMEOUT = bindings::SQLITE_BUSY_TIMEOUT as isize,
-    CANTOPEN_NOTEMPDIR = bindings::SQLITE_CANTOPEN_NOTEMPDIR as isize,
-    CANTOPEN_ISDIR = bindings::SQLITE_CANTOPEN_ISDIR as isize,
-    CANTOPEN_FULLPATH = bindings::SQLITE_CANTOPEN_FULLPATH as isize,
-    CANTOPEN_CONVPATH = bindings::SQLITE_CANTOPEN_CONVPATH as isize,
-    CANTOPEN_DIRTYWAL = bindings::SQLITE_CANTOPEN_DIRTYWAL as isize,
-    CANTOPEN_SYMLINK = bindings::SQLITE_CANTOPEN_SYMLINK as isize,
-    CORRUPT_VTAB = bindings::SQLITE_CORRUPT_VTAB as isize,
-    CORRUPT_SEQUENCE = bindings::SQLITE_CORRUPT_SEQUENCE as isize,
-    CORRUPT_INDEX = bindings::SQLITE_CORRUPT_INDEX as isize,
-    READONLY_RECOVERY = bindings::SQLITE_READONLY_RECOVERY as isize,
-    READONLY_CANTLOCK = bindings::SQLITE_READONLY_CANTLOCK as isize,
-    READONLY_ROLLBACK = bindings::SQLITE_READONLY_ROLLBACK as isize,
-    READONLY_DBMOVED = bindings::SQLITE_READONLY_DBMOVED as isize,
-    READONLY_CANTINIT = bindings::SQLITE_READONLY_CANTINIT as isize,
-    READONLY_DIRECTORY = bindings::SQLITE_READONLY_DIRECTORY as isize,
-    ABORT_ROLLBACK = bindings::SQLITE_ABORT_ROLLBACK as isize,
-    CONSTRAINT_CHECK = bindings::SQLITE_CONSTRAINT_CHECK as isize,
-    CONSTRAINT_COMMITHOOK = bindings::SQLITE_CONSTRAINT_COMMITHOOK as isize,
-    CONSTRAINT_FOREIGNKEY = bindings::SQLITE_CONSTRAINT_FOREIGNKEY as isize,
-    CONSTRAINT_FUNCTION = bindings::SQLITE_CONSTRAINT_FUNCTION as isize,
-    CONSTRAINT_NOTNULL = bindings::SQLITE_CONSTRAINT_NOTNULL as isize,
-    CONSTRAINT_PRIMARYKEY = bindings::SQLITE_CONSTRAINT_PRIMARYKEY as isize,
-    CONSTRAINT_TRIGGER = bindings::SQLITE_CONSTRAINT_TRIGGER as isize,
-    CONSTRAINT_UNIQUE = bindings::SQLITE_CONSTRAINT_UNIQUE as isize,
-    CONSTRAINT_VTAB = bindings::SQLITE_CONSTRAINT_VTAB as isize,
-    CONSTRAINT_ROWID = bindings::SQLITE_CONSTRAINT_ROWID as isize,
-    CONSTRAINT_PINNED = bindings::SQLITE_CONSTRAINT_PINNED as isize,
-    CONSTRAINT_DATATYPE = bindings::SQLITE_CONSTRAINT_DATATYPE as isize,
-    NOTICE_RECOVER_WAL = bindings::SQLITE_NOTICE_RECOVER_WAL as isize,
-    NOTICE_RECOVER_ROLLBACK = bindings::SQLITE_NOTICE_RECOVER_ROLLBACK as isize,
-    WARNING_AUTOINDEX = bindings::SQLITE_WARNING_AUTOINDEX as isize,
-    AUTH_USER = bindings::SQLITE_AUTH_USER as isize,
-    OK_LOAD_PERMANENTLY = bindings::SQLITE_OK_LOAD_PERMANENTLY as isize,
-    OK_SYMLINK = bindings::SQLITE_OK_SYMLINK as isize,
+    ERROR_MISSING_COLLSEQ = sqlite3_capi::ERROR_MISSING_COLLSEQ as isize,
+    ERROR_RETRY = sqlite3_capi::ERROR_RETRY as isize,
+    ERROR_SNAPSHOT = sqlite3_capi::ERROR_SNAPSHOT as isize,
+    IOERR_READ = sqlite3_capi::IOERR_READ as isize,
+    IOERR_SHORT_READ = sqlite3_capi::IOERR_SHORT_READ as isize,
+    IOERR_WRITE = sqlite3_capi::IOERR_WRITE as isize,
+    IOERR_FSYNC = sqlite3_capi::IOERR_FSYNC as isize,
+    IOERR_DIR_FSYNC = sqlite3_capi::IOERR_DIR_FSYNC as isize,
+    IOERR_TRUNCATE = sqlite3_capi::IOERR_TRUNCATE as isize,
+    IOERR_FSTAT = sqlite3_capi::IOERR_FSTAT as isize,
+    IOERR_UNLOCK = sqlite3_capi::IOERR_UNLOCK as isize,
+    IOERR_RDLOCK = sqlite3_capi::IOERR_RDLOCK as isize,
+    IOERR_DELETE = sqlite3_capi::IOERR_DELETE as isize,
+    IOERR_BLOCKED = sqlite3_capi::IOERR_BLOCKED as isize,
+    IOERR_NOMEM = sqlite3_capi::IOERR_NOMEM as isize,
+    IOERR_ACCESS = sqlite3_capi::IOERR_ACCESS as isize,
+    IOERR_CHECKRESERVEDLOCK = sqlite3_capi::IOERR_CHECKRESERVEDLOCK as isize,
+    IOERR_LOCK = sqlite3_capi::IOERR_LOCK as isize,
+    IOERR_CLOSE = sqlite3_capi::IOERR_CLOSE as isize,
+    IOERR_DIR_CLOSE = sqlite3_capi::IOERR_DIR_CLOSE as isize,
+    IOERR_SHMOPEN = sqlite3_capi::IOERR_SHMOPEN as isize,
+    IOERR_SHMSIZE = sqlite3_capi::IOERR_SHMSIZE as isize,
+    IOERR_SHMLOCK = sqlite3_capi::IOERR_SHMLOCK as isize,
+    IOERR_SHMMAP = sqlite3_capi::IOERR_SHMMAP as isize,
+    IOERR_SEEK = sqlite3_capi::IOERR_SEEK as isize,
+    IOERR_DELETE_NOENT = sqlite3_capi::IOERR_DELETE_NOENT as isize,
+    IOERR_MMAP = sqlite3_capi::IOERR_MMAP as isize,
+    IOERR_GETTEMPPATH = sqlite3_capi::IOERR_GETTEMPPATH as isize,
+    IOERR_CONVPATH = sqlite3_capi::IOERR_CONVPATH as isize,
+    IOERR_VNODE = sqlite3_capi::IOERR_VNODE as isize,
+    IOERR_AUTH = sqlite3_capi::IOERR_AUTH as isize,
+    IOERR_BEGIN_ATOMIC = sqlite3_capi::IOERR_BEGIN_ATOMIC as isize,
+    IOERR_COMMIT_ATOMIC = sqlite3_capi::IOERR_COMMIT_ATOMIC as isize,
+    IOERR_ROLLBACK_ATOMIC = sqlite3_capi::IOERR_ROLLBACK_ATOMIC as isize,
+    IOERR_DATA = sqlite3_capi::IOERR_DATA as isize,
+    IOERR_CORRUPTFS = sqlite3_capi::IOERR_CORRUPTFS as isize,
+    LOCKED_SHAREDCACHE = sqlite3_capi::LOCKED_SHAREDCACHE as isize,
+    LOCKED_VTAB = sqlite3_capi::LOCKED_VTAB as isize,
+    BUSY_RECOVERY = sqlite3_capi::BUSY_RECOVERY as isize,
+    BUSY_SNAPSHOT = sqlite3_capi::BUSY_SNAPSHOT as isize,
+    BUSY_TIMEOUT = sqlite3_capi::BUSY_TIMEOUT as isize,
+    CANTOPEN_NOTEMPDIR = sqlite3_capi::CANTOPEN_NOTEMPDIR as isize,
+    CANTOPEN_ISDIR = sqlite3_capi::CANTOPEN_ISDIR as isize,
+    CANTOPEN_FULLPATH = sqlite3_capi::CANTOPEN_FULLPATH as isize,
+    CANTOPEN_CONVPATH = sqlite3_capi::CANTOPEN_CONVPATH as isize,
+    CANTOPEN_DIRTYWAL = sqlite3_capi::CANTOPEN_DIRTYWAL as isize,
+    CANTOPEN_SYMLINK = sqlite3_capi::CANTOPEN_SYMLINK as isize,
+    CORRUPT_VTAB = sqlite3_capi::CORRUPT_VTAB as isize,
+    CORRUPT_SEQUENCE = sqlite3_capi::CORRUPT_SEQUENCE as isize,
+    CORRUPT_INDEX = sqlite3_capi::CORRUPT_INDEX as isize,
+    READONLY_RECOVERY = sqlite3_capi::READONLY_RECOVERY as isize,
+    READONLY_CANTLOCK = sqlite3_capi::READONLY_CANTLOCK as isize,
+    READONLY_ROLLBACK = sqlite3_capi::READONLY_ROLLBACK as isize,
+    READONLY_DBMOVED = sqlite3_capi::READONLY_DBMOVED as isize,
+    READONLY_CANTINIT = sqlite3_capi::READONLY_CANTINIT as isize,
+    READONLY_DIRECTORY = sqlite3_capi::READONLY_DIRECTORY as isize,
+    ABORT_ROLLBACK = sqlite3_capi::ABORT_ROLLBACK as isize,
+    CONSTRAINT_CHECK = sqlite3_capi::CONSTRAINT_CHECK as isize,
+    CONSTRAINT_COMMITHOOK = sqlite3_capi::CONSTRAINT_COMMITHOOK as isize,
+    CONSTRAINT_FOREIGNKEY = sqlite3_capi::CONSTRAINT_FOREIGNKEY as isize,
+    CONSTRAINT_FUNCTION = sqlite3_capi::CONSTRAINT_FUNCTION as isize,
+    CONSTRAINT_NOTNULL = sqlite3_capi::CONSTRAINT_NOTNULL as isize,
+    CONSTRAINT_PRIMARYKEY = sqlite3_capi::CONSTRAINT_PRIMARYKEY as isize,
+    CONSTRAINT_TRIGGER = sqlite3_capi::CONSTRAINT_TRIGGER as isize,
+    CONSTRAINT_UNIQUE = sqlite3_capi::CONSTRAINT_UNIQUE as isize,
+    CONSTRAINT_VTAB = sqlite3_capi::CONSTRAINT_VTAB as isize,
+    CONSTRAINT_ROWID = sqlite3_capi::CONSTRAINT_ROWID as isize,
+    CONSTRAINT_PINNED = sqlite3_capi::CONSTRAINT_PINNED as isize,
+    CONSTRAINT_DATATYPE = sqlite3_capi::CONSTRAINT_DATATYPE as isize,
+    NOTICE_RECOVER_WAL = sqlite3_capi::NOTICE_RECOVER_WAL as isize,
+    NOTICE_RECOVER_ROLLBACK = sqlite3_capi::NOTICE_RECOVER_ROLLBACK as isize,
+    WARNING_AUTOINDEX = sqlite3_capi::WARNING_AUTOINDEX as isize,
+    AUTH_USER = sqlite3_capi::AUTH_USER as isize,
+    OK_LOAD_PERMANENTLY = sqlite3_capi::OK_LOAD_PERMANENTLY as isize,
+    OK_SYMLINK = sqlite3_capi::OK_SYMLINK as isize,
 
     NULL = 5000,
 }
@@ -280,7 +280,7 @@ pub trait Connection {
 
     fn changes64(&self) -> i64;
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn enable_load_extension(&self, enable: bool) -> Result<ResultCode, ResultCode>;
 
     fn errcode(&self) -> ResultCode;
@@ -295,7 +295,7 @@ pub trait Connection {
 
     fn exec_safe(&self, sql: &str) -> Result<ResultCode, ResultCode>;
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn load_extension(
         &self,
         filename: &str,
@@ -391,7 +391,7 @@ impl Connection for ManagedConnection {
         self.db.exec_safe(sql)
     }
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn enable_load_extension(&self, enable: bool) -> Result<ResultCode, ResultCode> {
         self.db.enable_load_extension(enable)
     }
@@ -423,7 +423,7 @@ impl Connection for ManagedConnection {
         self.db.update_hook(callback, ctx)
     }
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn load_extension(
         &self,
         filename: &str,
@@ -562,12 +562,12 @@ impl Connection for *mut sqlite3 {
         }
     }
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn enable_load_extension(&self, enable: bool) -> Result<ResultCode, ResultCode> {
         convert_rc(enable_load_extension(*self, if enable { 1 } else { 0 }))
     }
 
-    #[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+    #[cfg(all(feature = "linked"))]
     fn load_extension(
         &self,
         filename: &str,
@@ -1346,29 +1346,20 @@ pub fn vtab_config(db: *mut sqlite3, options: u32) -> Result<ResultCode, ResultC
     convert_rc(rc)
 }
 
-// type xCreateC = extern "C" fn(
-//     *mut sqlite3,
-//     *mut c_void,
-//     c_int,
-//     *const *const c_char,
-//     *mut *mut vtab,
-//     *mut *mut c_char,
-// ) -> c_int;
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-// // return a lambda that invokes f appropriately?
-// pub const fn xCreate(
-//     f: fn(
-//         db: *mut sqlite3,
-//         aux: *mut c_void,
-//         args: Vec<&str>,
-//         tab: *mut *mut vtab,   // declare tab for them?
-//         err: *mut *mut c_char, // box?
-//     ) -> Result<ResultCode, ResultCode>,
-// ) -> xCreateC {
-//     move |db, aux, argc, argv, ppvtab, errmsg| match f(db, aux, str_args, ppvtab, errmsg) {
-//         Ok(rc) => rc as c_int,
-//         Err(rc) => rc as c_int,
-//     }
-// }
+    #[test]
+    fn test_open_in_memory() -> Result<(), ResultCode> {
+        let conn = open(strlit!(":memory:"))?;
 
-// *mut sqlite3, *mut c_void, Vec<&str>, *mut *mut vtab, *mut *mut c_char
+        let stmt = conn.prepare_v2("SELECT 1")?;
+        stmt.step()?;
+        let result = stmt.column_int(0);
+
+        assert_eq!(result, 1);
+
+        Ok(())
+    }
+}

@@ -6,14 +6,29 @@ use core::ptr;
 use alloc::borrow::ToOwned;
 use alloc::ffi::CString;
 
-pub use crate::bindings::{
+pub use libsqlite3_sys::{
     sqlite3, sqlite3_api_routines as api_routines, sqlite3_context as context,
-    sqlite3_index_info as index_info,
-    sqlite3_index_info_sqlite3_index_constraint as index_constraint,
-    sqlite3_index_info_sqlite3_index_constraint_usage as index_constraint_usage,
-    sqlite3_module as module, sqlite3_mutex, sqlite3_stmt as stmt, sqlite3_uint64 as uint64,
-    sqlite3_value as value, sqlite3_vtab as vtab, sqlite3_vtab_cursor as vtab_cursor,
-    sqlite_int64 as int64, SQLITE_DETERMINISTIC as DETERMINISTIC, SQLITE_DIRECTONLY as DIRECTONLY,
+    sqlite3_index_info as index_info, sqlite3_module as module, sqlite3_mutex,
+    sqlite3_stmt as stmt, sqlite3_uint64 as uint64, sqlite3_value as value, sqlite3_vtab as vtab,
+    sqlite3_vtab_cursor as vtab_cursor, sqlite_int64 as int64,
+    SQLITE_ABORT_ROLLBACK as ABORT_ROLLBACK, SQLITE_AUTH_USER as AUTH_USER,
+    SQLITE_BUSY_RECOVERY as BUSY_RECOVERY, SQLITE_BUSY_SNAPSHOT as BUSY_SNAPSHOT,
+    SQLITE_BUSY_TIMEOUT as BUSY_TIMEOUT, SQLITE_CANTOPEN_CONVPATH as CANTOPEN_CONVPATH,
+    SQLITE_CANTOPEN_DIRTYWAL as CANTOPEN_DIRTYWAL, SQLITE_CANTOPEN_FULLPATH as CANTOPEN_FULLPATH,
+    SQLITE_CANTOPEN_ISDIR as CANTOPEN_ISDIR, SQLITE_CANTOPEN_NOTEMPDIR as CANTOPEN_NOTEMPDIR,
+    SQLITE_CANTOPEN_SYMLINK as CANTOPEN_SYMLINK, SQLITE_CONSTRAINT_CHECK as CONSTRAINT_CHECK,
+    SQLITE_CONSTRAINT_COMMITHOOK as CONSTRAINT_COMMITHOOK,
+    SQLITE_CONSTRAINT_DATATYPE as CONSTRAINT_DATATYPE,
+    SQLITE_CONSTRAINT_FOREIGNKEY as CONSTRAINT_FOREIGNKEY,
+    SQLITE_CONSTRAINT_FUNCTION as CONSTRAINT_FUNCTION,
+    SQLITE_CONSTRAINT_NOTNULL as CONSTRAINT_NOTNULL, SQLITE_CONSTRAINT_PINNED as CONSTRAINT_PINNED,
+    SQLITE_CONSTRAINT_PRIMARYKEY as CONSTRAINT_PRIMARYKEY,
+    SQLITE_CONSTRAINT_ROWID as CONSTRAINT_ROWID, SQLITE_CONSTRAINT_TRIGGER as CONSTRAINT_TRIGGER,
+    SQLITE_CONSTRAINT_UNIQUE as CONSTRAINT_UNIQUE, SQLITE_CONSTRAINT_VTAB as CONSTRAINT_VTAB,
+    SQLITE_CORRUPT_INDEX as CORRUPT_INDEX, SQLITE_CORRUPT_SEQUENCE as CORRUPT_SEQUENCE,
+    SQLITE_CORRUPT_VTAB as CORRUPT_VTAB, SQLITE_DETERMINISTIC as DETERMINISTIC,
+    SQLITE_DIRECTONLY as DIRECTONLY, SQLITE_ERROR_MISSING_COLLSEQ as ERROR_MISSING_COLLSEQ,
+    SQLITE_ERROR_RETRY as ERROR_RETRY, SQLITE_ERROR_SNAPSHOT as ERROR_SNAPSHOT,
     SQLITE_INDEX_CONSTRAINT_EQ as INDEX_CONSTRAINT_EQ,
     SQLITE_INDEX_CONSTRAINT_GE as INDEX_CONSTRAINT_GE,
     SQLITE_INDEX_CONSTRAINT_GLOB as INDEX_CONSTRAINT_GLOB,
@@ -28,38 +43,61 @@ pub use crate::bindings::{
     SQLITE_INDEX_CONSTRAINT_MATCH as INDEX_CONSTRAINT_MATCH,
     SQLITE_INDEX_CONSTRAINT_NE as INDEX_CONSTRAINT_NE,
     SQLITE_INDEX_CONSTRAINT_REGEXP as INDEX_CONSTRAINT_REGEXP, SQLITE_INNOCUOUS as INNOCUOUS,
+    SQLITE_IOERR_ACCESS as IOERR_ACCESS, SQLITE_IOERR_AUTH as IOERR_AUTH,
+    SQLITE_IOERR_BEGIN_ATOMIC as IOERR_BEGIN_ATOMIC, SQLITE_IOERR_BLOCKED as IOERR_BLOCKED,
+    SQLITE_IOERR_CHECKRESERVEDLOCK as IOERR_CHECKRESERVEDLOCK, SQLITE_IOERR_CLOSE as IOERR_CLOSE,
+    SQLITE_IOERR_COMMIT_ATOMIC as IOERR_COMMIT_ATOMIC, SQLITE_IOERR_CONVPATH as IOERR_CONVPATH,
+    SQLITE_IOERR_CORRUPTFS as IOERR_CORRUPTFS, SQLITE_IOERR_DATA as IOERR_DATA,
+    SQLITE_IOERR_DELETE as IOERR_DELETE, SQLITE_IOERR_DELETE_NOENT as IOERR_DELETE_NOENT,
+    SQLITE_IOERR_DIR_CLOSE as IOERR_DIR_CLOSE, SQLITE_IOERR_DIR_FSYNC as IOERR_DIR_FSYNC,
+    SQLITE_IOERR_FSTAT as IOERR_FSTAT, SQLITE_IOERR_FSYNC as IOERR_FSYNC,
+    SQLITE_IOERR_GETTEMPPATH as IOERR_GETTEMPPATH, SQLITE_IOERR_LOCK as IOERR_LOCK,
+    SQLITE_IOERR_MMAP as IOERR_MMAP, SQLITE_IOERR_NOMEM as IOERR_NOMEM,
+    SQLITE_IOERR_RDLOCK as IOERR_RDLOCK, SQLITE_IOERR_READ as IOERR_READ,
+    SQLITE_IOERR_ROLLBACK_ATOMIC as IOERR_ROLLBACK_ATOMIC, SQLITE_IOERR_SEEK as IOERR_SEEK,
+    SQLITE_IOERR_SHMLOCK as IOERR_SHMLOCK, SQLITE_IOERR_SHMMAP as IOERR_SHMMAP,
+    SQLITE_IOERR_SHMOPEN as IOERR_SHMOPEN, SQLITE_IOERR_SHMSIZE as IOERR_SHMSIZE,
+    SQLITE_IOERR_SHORT_READ as IOERR_SHORT_READ, SQLITE_IOERR_TRUNCATE as IOERR_TRUNCATE,
+    SQLITE_IOERR_UNLOCK as IOERR_UNLOCK, SQLITE_IOERR_VNODE as IOERR_VNODE,
+    SQLITE_IOERR_WRITE as IOERR_WRITE, SQLITE_LOCKED_SHAREDCACHE as LOCKED_SHAREDCACHE,
+    SQLITE_LOCKED_VTAB as LOCKED_VTAB, SQLITE_NOTICE_RECOVER_ROLLBACK as NOTICE_RECOVER_ROLLBACK,
+    SQLITE_NOTICE_RECOVER_WAL as NOTICE_RECOVER_WAL,
+    SQLITE_OK_LOAD_PERMANENTLY as OK_LOAD_PERMANENTLY, SQLITE_OK_SYMLINK as OK_SYMLINK,
     SQLITE_PREPARE_NORMALIZE as PREPARE_NORMALIZE, SQLITE_PREPARE_NO_VTAB as PREPARE_NO_VTAB,
-    SQLITE_PREPARE_PERSISTENT as PREPARE_PERSISTENT, SQLITE_UTF8 as UTF8,
+    SQLITE_PREPARE_PERSISTENT as PREPARE_PERSISTENT, SQLITE_READONLY_CANTINIT as READONLY_CANTINIT,
+    SQLITE_READONLY_CANTLOCK as READONLY_CANTLOCK, SQLITE_READONLY_DBMOVED as READONLY_DBMOVED,
+    SQLITE_READONLY_DIRECTORY as READONLY_DIRECTORY, SQLITE_READONLY_RECOVERY as READONLY_RECOVERY,
+    SQLITE_READONLY_ROLLBACK as READONLY_ROLLBACK, SQLITE_UTF8 as UTF8,
+    SQLITE_WARNING_AUTOINDEX as WARNING_AUTOINDEX,
 };
 
 mod aliased {
-    #[cfg(feature = "static")]
-    pub use crate::bindings::{
+    #[cfg(feature = "linked")]
+    pub use libsqlite3_sys::{
         sqlite3_bind_blob as bind_blob, sqlite3_bind_double as bind_double,
         sqlite3_bind_int as bind_int, sqlite3_bind_int64 as bind_int64,
         sqlite3_bind_null as bind_null, sqlite3_bind_parameter_count as bind_parameter_count,
-        sqlite3_bind_parameter_index as bind_parameter_index,
         sqlite3_bind_parameter_name as bind_parameter_name, sqlite3_bind_pointer as bind_pointer,
         sqlite3_bind_text as bind_text, sqlite3_bind_value as bind_value,
-        sqlite3_bind_zeroblob as bind_zeroblob, sqlite3_changes64 as changes64,
-        sqlite3_clear_bindings as clear_bindings, sqlite3_close as close,
-        sqlite3_column_blob as column_blob, sqlite3_column_bytes as column_bytes,
-        sqlite3_column_count as column_count, sqlite3_column_decltype as column_decltype,
+        sqlite3_changes64 as changes64, sqlite3_clear_bindings as clear_bindings,
+        sqlite3_close as close, sqlite3_column_blob as column_blob,
+        sqlite3_column_bytes as column_bytes, sqlite3_column_count as column_count,
         sqlite3_column_double as column_double, sqlite3_column_int as column_int,
         sqlite3_column_int64 as column_int64, sqlite3_column_name as column_name,
-        sqlite3_column_origin_name as column_origin_name,
-        sqlite3_column_table_name as column_table_name, sqlite3_column_text as column_text,
-        sqlite3_column_type as column_type, sqlite3_column_value as column_value,
-        sqlite3_commit_hook as commit_hook, sqlite3_context_db_handle as context_db_handle,
+        sqlite3_column_text as column_text, sqlite3_column_type as column_type,
+        sqlite3_column_value as column_value, sqlite3_commit_hook as commit_hook,
+        sqlite3_context_db_handle as context_db_handle,
         sqlite3_create_function_v2 as create_function_v2,
         sqlite3_create_module_v2 as create_module_v2, sqlite3_declare_vtab as declare_vtab,
-        sqlite3_errcode as errcode, sqlite3_errmsg as errmsg, sqlite3_error_offset as error_offset,
-        sqlite3_exec as exec, sqlite3_finalize as finalize, sqlite3_free as free,
+        sqlite3_enable_load_extension as enable_load_extension, sqlite3_errcode as errcode,
+        sqlite3_errmsg as errmsg, sqlite3_error_offset as error_offset, sqlite3_exec as exec,
+        sqlite3_finalize as finalize, sqlite3_free as free,
         sqlite3_get_autocommit as get_autocommit, sqlite3_get_auxdata as get_auxdata,
         sqlite3_libversion as libversion, sqlite3_libversion_number as libversion_number,
-        sqlite3_malloc as malloc, sqlite3_malloc64 as malloc64,
-        sqlite3_next_stmt as next_stmt, sqlite3_open as open, sqlite3_prepare_v2 as prepare_v2,
-        sqlite3_prepare_v3 as prepare_v3, sqlite3_randomness as randomness, sqlite3_reset as reset,
+        sqlite3_load_extension as load_extension, sqlite3_malloc as malloc,
+        sqlite3_malloc64 as malloc64, sqlite3_next_stmt as next_stmt, sqlite3_open as open,
+        sqlite3_prepare_v2 as prepare_v2, sqlite3_prepare_v3 as prepare_v3,
+        sqlite3_randomness as randomness, sqlite3_reset as reset,
         sqlite3_result_blob as result_blob, sqlite3_result_double as result_double,
         sqlite3_result_error as result_error, sqlite3_result_error_code as result_error_code,
         sqlite3_result_int as result_int, sqlite3_result_int64 as result_int64,
@@ -72,10 +110,8 @@ mod aliased {
         sqlite3_value_blob as value_blob, sqlite3_value_bytes as value_bytes,
         sqlite3_value_double as value_double, sqlite3_value_int as value_int,
         sqlite3_value_int64 as value_int64, sqlite3_value_pointer as value_pointer,
-        sqlite3_value_subtype as value_subtype, sqlite3_value_text as value_text,
-        sqlite3_value_type as value_type, sqlite3_vtab_collation as vtab_collation,
+        sqlite3_value_text as value_text, sqlite3_value_type as value_type,
         sqlite3_vtab_config as vtab_config, sqlite3_vtab_distinct as vtab_distinct,
-        sqlite3_vtab_nochange as vtab_nochange, sqlite3_vtab_on_conflict as vtab_on_conflict,
     };
 }
 
@@ -92,7 +128,7 @@ macro_rules! strlit {
     };
 }
 
-#[cfg(feature = "static")]
+#[cfg(feature = "linked")]
 macro_rules! invoke_sqlite {
     ($name:ident, $($arg:expr),*) => {
       aliased::$name($($arg),*)
@@ -166,7 +202,7 @@ pub fn changes64(db: *mut sqlite3) -> int64 {
 }
 
 pub fn shutdown() -> c_int {
-    #[cfg(feature = "static")]
+    #[cfg(feature = "linked")]
     unsafe {
         aliased::shutdown()
     }
@@ -353,9 +389,9 @@ pub fn declare_vtab(db: *mut sqlite3, s: *const c_char) -> c_int {
     unsafe { invoke_sqlite!(declare_vtab, db, s) }
 }
 
-#[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+#[cfg(all(feature = "linked"))]
 pub fn enable_load_extension(db: *mut sqlite3, onoff: c_int) -> c_int {
-    unsafe { crate::bindings::sqlite3_enable_load_extension(db, onoff) }
+    unsafe { invoke_sqlite!(enable_load_extension, db, onoff) }
 }
 
 pub fn errcode(db: *mut sqlite3) -> c_int {
@@ -387,14 +423,14 @@ pub fn get_auxdata(context: *mut context, n: c_int) -> *mut c_void {
     unsafe { invoke_sqlite!(get_auxdata, context, n) }
 }
 
-#[cfg(all(feature = "static", not(feature = "omit_load_extension")))]
+#[cfg(all(feature = "linked"))]
 pub fn load_extension(
     db: *mut sqlite3,
     zfile: *const c_char,
     zproc: *const c_char,
     pzerr: *mut *mut c_char,
 ) -> c_int {
-    unsafe { crate::bindings::sqlite3_load_extension(db, zfile, zproc, pzerr) }
+    unsafe { invoke_sqlite!(load_extension, db, zfile, zproc, pzerr) }
 }
 
 pub fn libversion() -> *const c_char {

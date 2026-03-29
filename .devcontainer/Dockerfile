@@ -1,7 +1,7 @@
 ARG VARIANT="2-trixie"
 FROM mcr.microsoft.com/devcontainers/base:${VARIANT}
 
-RUN apt-get update && apt-get upgrade -y && apt-get install libclang-dev -y
+RUN apt-get update && apt-get upgrade -y
 
 USER vscode
 
